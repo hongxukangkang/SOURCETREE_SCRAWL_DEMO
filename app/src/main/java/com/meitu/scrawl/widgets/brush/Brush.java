@@ -26,6 +26,9 @@ public class Brush {
         mBrushWithBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.brush_bg);
         try {
             this.mProgramId = ShaderUtils.generateShaderProgram(mContext,"brush_vertices_shader.sl","brush_fragment_shader.sl");
+            if(mProgramId == 0){
+                throw new RuntimeException("initial Brush exception.please try again later or send email to zhaokangk@sina.com");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
