@@ -1,13 +1,17 @@
 package com.meitu.scrawl.widgets.brush;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.RectF;
 import android.opengl.GLES20;
 import android.util.Log;
 
+import com.meitu.scrawl.R;
 import com.meitu.scrawl.utils.BufferUtils;
 import com.meitu.scrawl.utils.ConfigParameters.*;
 import com.meitu.scrawl.utils.DemoData;
+import com.meitu.scrawl.utils.ImageUtils;
 import com.meitu.scrawl.utils.ShaderUtils;
 
 import java.nio.FloatBuffer;
@@ -32,7 +36,7 @@ public class TextureDistrict {
     private int samplerHandle;
     private int positionHandle;
     private int textureCordHandle;
-
+    private Bitmap mBitmap;
 
     public TextureDistrict(Context context, int textureId) {
         this.mContext = context;
