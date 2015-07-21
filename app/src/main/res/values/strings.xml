@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">小涂涂</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn_texture">纹理涂鸦</string>
+    <string name="system_exit">再按一次退出程序</string>
+    <string name="title_activity_texture_scrawl">TextureScrawlActivity</string>
+</resources>
