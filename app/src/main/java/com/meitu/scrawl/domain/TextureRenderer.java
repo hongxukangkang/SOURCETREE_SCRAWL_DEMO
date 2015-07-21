@@ -66,7 +66,7 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
     public void onDrawFrame(GL10 gl10) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, frameBufferId[0]);
-
+        mBrush.draw();
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
         offlineScreenRenderer();
     }
