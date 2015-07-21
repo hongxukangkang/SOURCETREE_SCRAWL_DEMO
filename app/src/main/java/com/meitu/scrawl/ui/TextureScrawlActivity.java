@@ -13,6 +13,7 @@ import com.meitu.scrawl.widgets.glsurfaceviews.TextureGLSurfaceView;
 public class TextureScrawlActivity extends Activity {
 
     private TextureGLSurfaceView mGLSurfaview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

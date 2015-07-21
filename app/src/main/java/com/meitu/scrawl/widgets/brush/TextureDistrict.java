@@ -27,23 +27,23 @@ public class TextureDistrict {
             0.0f, 1.0f
     };
 
-    private float[] vertices = { };
+    private float[] vertices = {};
 
     private int samplerHandle;
     private int positionHandle;
     private int textureCordHandle;
 
 
-    public TextureDistrict(Context context,int textureId) {
+    public TextureDistrict(Context context, int textureId) {
         this.mContext = context;
         this.mTextureId = textureId;
         verticesBuffer = BufferUtils.getBufferFromFloatArray(DemoData.vertices);
         textureCordBuffer = BufferUtils.getBufferFromFloatArray(textureCord);
         try {
             mProgramId = ShaderUtils.generateShaderProgram(context, "brush_vertices_shader.sl", "brush_fragment_shader.sl");
-            samplerHandle = GLES20.glGetUniformLocation(mProgramId,ShaderConfig.UNIFORM_SAMPLER);
+            samplerHandle = GLES20.glGetUniformLocation(mProgramId, ShaderConfig.UNIFORM_SAMPLER);
             positionHandle = GLES20.glGetAttribLocation(mProgramId, ShaderConfig.ATTRIBUTE_POSITION);
-            textureCordHandle = GLES20.glGetAttribLocation(mProgramId,ShaderConfig.ATTRIBUTE_TEXTURECORD);
+            textureCordHandle = GLES20.glGetAttribLocation(mProgramId, ShaderConfig.ATTRIBUTE_TEXTURECORD);
             Log.i(TAG, "mProgramId:" + mProgramId);
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,7 +57,7 @@ public class TextureDistrict {
     private FloatBuffer verticesBuffer;
     private FloatBuffer textureCordBuffer;
 
-    public void setImageDomain(RectF domain){
+    public void setImageDomain(RectF domain) {
         this.mImgDomain = domain;
         updateVerticesFloatBuffer();
     }
@@ -93,6 +93,6 @@ public class TextureDistrict {
 
         GLES20.glUniform1f(GLES20.GL_TEXTURE0, 0);
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
-        GLES20.glBindTexture(GLES20.GL_TEXTURE0,0);
+        GLES20.glBindTexture(GLES20.GL_TEXTURE0, 0);
     }
 }

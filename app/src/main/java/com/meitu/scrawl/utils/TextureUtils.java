@@ -95,4 +95,17 @@ public class TextureUtils {
         result.put(pixels).position(0);
         return result;
     }
+
+    public static int generateBrushTexture(Bitmap bitmap) {
+        int buffer[] = new int[1];
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        IntBuffer ib = getBitmapBuffer(bitmap);
+        GLES20.glGenTextures(1, buffer, 0);
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, buffer[0]);
+        GLES20.glTexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, width, height, 0, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, ib);
+        GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR);
+        GLES20.glTexParameterf(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_LINEAR);
+        return buffer[0];
+    }
 }

@@ -16,26 +16,26 @@ public class ShaderUtils {
 
     private static final String NEW_LINE_SEPARATOR = "\n";
 
-    private static String getShaderScriptS(Context context,String shaderSrc) throws IOException {
+    private static String getShaderScriptS(Context context, String shaderSrc) throws IOException {
         StringBuffer stringBuffer = new StringBuffer();
         InputStream in = context.getAssets().open(shaderSrc);
         InputStreamReader inputStreamReader = new InputStreamReader(in);
         BufferedReader reader = new BufferedReader(inputStreamReader);
         String temp = reader.readLine();
-        while(temp != null){
+        while (temp != null) {
             stringBuffer.append(temp).append(NEW_LINE_SEPARATOR);
             temp = reader.readLine();
         }
         return stringBuffer.toString();
     }
 
-    public static int generateShaderProgram(Context context,String vertexSrc,String fragmentSrc) throws IOException{
+    public static int generateShaderProgram(Context context, String vertexSrc, String fragmentSrc) throws IOException {
 
         String vertexShader = getShaderScriptS(context, vertexSrc);
         String fragmentShader = getShaderScriptS(context, fragmentSrc);
         int vertexShaderId = GLES20.glCreateShader(GLES20.GL_VERTEX_SHADER);
         int fragmentShaderId = GLES20.glCreateShader(GLES20.GL_FRAGMENT_SHADER);
-        if (vertexShaderId==0 || fragmentShaderId ==0){
+        if (vertexShaderId == 0 || fragmentShaderId == 0) {
             return 0;
         }
         int params[] = new int[1];
@@ -44,7 +44,7 @@ public class ShaderUtils {
         GLES20.glShaderSource(fragmentShaderId, fragmentShader);
         GLES20.glCompileShader(vertexShaderId);
         GLES20.glGetShaderiv(vertexShaderId, GLES20.GL_COMPILE_STATUS, params, 0);
-        if (params[0] == 0){
+        if (params[0] == 0) {
             return 0;
         }
 
@@ -59,7 +59,7 @@ public class ShaderUtils {
         GLES20.glAttachShader(programId, vertexShaderId);
         GLES20.glAttachShader(programId, fragmentShaderId);
         GLES20.glLinkProgram(programId);
-        GLES20.glGetProgramiv(programId,GLES20.GL_LINK_STATUS, linkParams,0);
+        GLES20.glGetProgramiv(programId, GLES20.GL_LINK_STATUS, linkParams, 0);
         if (linkParams[0] == 0) {
             return 0;
         }

@@ -40,14 +40,14 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
         textureId = new int[2];
         frameBufferId = new int[1];
         mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.bg_pomelo_width);
-        mBitmap = ImageUtils.reverseBitmap(mBitmap,1);
+        mBitmap = ImageUtils.reverseBitmap(mBitmap, 1);
     }
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
         GLES20.glClearColor(TextureGLSurfaceViewConfig.COLOR_R, TextureGLSurfaceViewConfig.COLOR_G, TextureGLSurfaceViewConfig.COLOR_B, TextureGLSurfaceViewConfig.COLOR_A);
         textureId[0] = TextureUtils.generateTexture(mBitmap);
-        frameBufferId[0]=TextureUtils.generateFrameBuffer(mBitmap,textureId[0]);
+        frameBufferId[0] = TextureUtils.generateFrameBuffer(mBitmap, textureId[0]);
 //        int redColor = mContext.getResources().getColor(R.color.red);
 //        textureId[0] = TextureUtils.generateColorTexture(mBitmap,redColor);
     }
@@ -57,8 +57,9 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
 //        GLES20.glViewport(100, 110, 500, 500);
         GLES20.glViewport(0, 0, width, height);
         RectF domain = ImageUtils.getImageDomain(mBitmap, width, height);
-        bgDistrict = new TextureDistrict(mContext,textureId[0]);
+        bgDistrict = new TextureDistrict(mContext, textureId[0]);
         bgDistrict.setImageDomain(domain);
+        mBrush = new Brush(mContext);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class TextureRenderer implements GLSurfaceView.Renderer {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
         GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, frameBufferId[0]);
 
-        GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER,0);
+        GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);
         offlineScreenRenderer();
     }
 

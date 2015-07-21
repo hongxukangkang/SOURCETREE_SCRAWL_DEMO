@@ -17,6 +17,7 @@ public class TextureGLSurfaceView extends GLSurfaceView {
     public TextureGLSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
     public TextureGLSurfaceView(Context context) {
         super(context);
         initialRunnableContext(context);

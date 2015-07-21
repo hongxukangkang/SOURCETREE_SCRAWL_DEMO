@@ -27,6 +27,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/widgets_margin_left_right"
             android:text="New Button"
-            android:background="@drawable/btn_click_selector"/>
+            android:background="@drawable/btn_click_selector" />
     </LinearLayout>
 </RelativeLayout>
